@@ -83,11 +83,11 @@ This repository contains a Computational Fluid Dynamics (CFD) project focused on
 
 - ---
 
-## 📄 License
+## License
 
-This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
+- **Code, case files, and scripts**: Licensed under the [MIT License](./LICENSE)
+- **Documentation, slides, and reports**: Licensed under [CC BY 4.0](./LICENSE-docs)
 
-Documentation and reports may be separately licensed under **CC BY 4.0**.
 
 ---
 
