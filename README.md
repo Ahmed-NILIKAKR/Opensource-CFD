@@ -81,6 +81,32 @@ This repository contains a Computational Fluid Dynamics (CFD) project focused on
 - **GPU**: Intel HD Graphics 620 + NVIDIA GeForce 940MX (2 GB VRAM)
 - No HPC resources used.
 
+- ---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for details.
+
+Documentation and reports may be separately licensed under **CC BY 4.0**.
+
+---
+
+## 🙋 Acknowledgements
+
+- OpenFOAM Foundation
+- Gmsh and ParaView development teams
+- Open-source community contributors
+- Reference literature for validation cases
+
+---
+
+## 📬 Contact
+
+**Author**: Ahmed Mushtaq Nilikkar  
+Feel free to open issues, submit PRs, or reach out via GitHub for collaboration or feedback.
+
+
+
 ---
 
 
