@@ -1,4 +1,4 @@
-name: Build Mesh Report PDF
+name: Build Laminar Mesh Report PDF
 
 on:
   push:
@@ -21,11 +21,11 @@ jobs:
 
       - name: Build PDF
         run: |
-          pandoc Mesh_Files/report.md \
+          pandoc Mesh_Files/Laminar_Mesh_Report.md \
             --from=gfm \
             --pdf-engine=xelatex \
             -V geometry:margin=1in \
-            -o Mesh_Files/report.pdf
+            -o Mesh_Files/Laminar_Mesh_Report.pdf
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
