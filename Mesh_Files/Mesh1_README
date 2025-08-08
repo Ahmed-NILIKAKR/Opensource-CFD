@@ -82,7 +82,7 @@ Below is the schematic representation of the domain and mesh in Gmsh:
 
 ## 📂 File List
 
-- `cylinder_laminar.geo` — Gmsh geometry file for mesh generation
+- [cylinder_Laminar](cylinder_Laminar.geo/) — Gmsh geometry file for mesh generation
 - `README.md` — This file
 
 ---
