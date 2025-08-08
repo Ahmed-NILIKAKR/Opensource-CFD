@@ -60,8 +60,8 @@ This repository contains a Computational Fluid Dynamics (CFD) project focused on
 
 ## 📈 Mesh Details 
 The [Mesh_files](Mesh_Files/) directory contains all mesh generation files used in this study. Separate mesh configurations are provided for laminar and turbulent simulations to reflect their distinct resolution requirements.
-Laminar meshes are optimised for low-Reynolds-number cases, balancing cell count and accuracy to capture vortex shedding without unnecessary computational cost.
-Turbulent meshes include finer boundary-layer refinement and extended wake-region resolution to accurately resolve high-Re flow structures.
+- Laminar meshes are optimised for low-Reynolds-number cases, balancing cell count and accuracy to capture vortex shedding without unnecessary computational cost.
+- Turbulent meshes include finer boundary-layer refinement and extended wake-region resolution to accurately resolve high-Re flow structures.
 All meshes were generated using Gmsh for a 2D computational domain (6 m × 3 m) extruded in the spanwise direction for OpenFOAM compatibility. Mesh quality was assessed using SICN and SIGE metrics, ensuring solver stability and physical fidelity across all cases.
 
 ---
