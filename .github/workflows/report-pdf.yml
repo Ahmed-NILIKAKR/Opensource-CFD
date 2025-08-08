@@ -4,17 +4,11 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'Mesh_Files/**'
-      - '.github/workflows/report-pdf.yml'
+      - 'Report/Build/**'
+      - '.github/workflows/build-report.yml'
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   build:
@@ -30,28 +24,19 @@ jobs:
             texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra \
             lmodern texlive-plain-generic
 
-      # Build inside Mesh_Files so relative image paths resolve
-      - name: Build PDF with Pandoc
-        working-directory: Mesh_Files
+      - name: Build PDF
+        working-directory: Report/Build
         run: |
-          pandoc Laminar_Mesh_Report.md \
+          pandoc Laminar_Mesh_Report_pdf.md \
             --from=gfm+tex_math_dollars \
             --pdf-engine=xelatex \
             -V geometry:margin=1in \
-            -o Laminar_Mesh_Report.pdf
+            -o ../Laminar_Mesh_Report.pdf
 
-      # Publish Mesh_Files/ (html preview of md + pdf) to GitHub Pages
-      - name: Upload artifact for Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: Mesh_Files
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit PDF to repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ../Laminar_Mesh_Report.pdf
+          git commit -m "ci: update Laminar Mesh Report PDF [skip ci]" || echo "No changes to commit"
+          git push
