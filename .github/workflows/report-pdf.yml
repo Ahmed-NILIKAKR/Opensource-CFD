@@ -30,15 +30,17 @@ jobs:
             texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra \
             lmodern texlive-plain-generic
 
-      - name: Build PDF
+      # Build inside Mesh_Files so relative image paths resolve
+      - name: Build PDF with Pandoc
         working-directory: Mesh_Files
         run: |
           pandoc Laminar_Mesh_Report.md \
-            --from=gfm \
+            --from=gfm+tex_math_dollars \
             --pdf-engine=xelatex \
             -V geometry:margin=1in \
             -o Laminar_Mesh_Report.pdf
 
+      # Publish Mesh_Files/ (html preview of md + pdf) to GitHub Pages
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v3
         with:
