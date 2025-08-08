@@ -59,7 +59,7 @@ This repository contains a Computational Fluid Dynamics (CFD) project focused on
 ---
 
 ## 📈 Mesh Details 
-The [Mesh_files](Mesh_files/)directory contains all mesh generation files used in this study. Separate mesh configurations are provided for laminar and turbulent simulations to reflect their distinct resolution requirements.
+The [Mesh_files](Mesh_files/) directory contains all mesh generation files used in this study. Separate mesh configurations are provided for laminar and turbulent simulations to reflect their distinct resolution requirements.
 
     - Laminar meshes are optimised for low-Reynolds-number cases, balancing cell count and accuracy to capture vortex shedding without unnecessary computational cost.
 
