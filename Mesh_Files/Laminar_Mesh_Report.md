@@ -75,7 +75,7 @@ These are well within typical OpenFOAM tolerances; heavy non‑orthogonal correc
 ### 4.1 Quality Distributions
 ![SICN distribution](Laminar_Images/SICN.jpg)
 
-\newpage
+
 
 ![SIGE distribution](Laminar_Images/SIGE.jpg)
 
