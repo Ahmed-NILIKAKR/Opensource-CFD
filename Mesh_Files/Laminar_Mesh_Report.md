@@ -20,7 +20,7 @@ The laminar mesh is designed and generated in **Gmsh**, exported in OpenFOAM-com
 
 | Patch Name | Type      | Description                              |
 |------------|-----------|------------------------------------------|
-| Inlet      | patch     | Uniform velocity \( U_\infty \)           |
+| Inlet      | patch     | Uniform velocity \( U_\infinity \)           |
 | Outlet     | patch     | Zero-gradient pressure                   |
 | Cylinder   | wall      | No-slip boundary condition               |
 | Top        | symmetry  | Symmetry plane to reduce domain size     |
