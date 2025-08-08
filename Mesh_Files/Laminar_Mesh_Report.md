@@ -7,7 +7,7 @@
 - Inlet / Outlet / Cylinder (wall) / Top & Btm (symmetry) / FrtBck (empty)
 
 ## Mesh Overview
-![Gmsh schematic](Laminar_Images/Schematic.jpg)
+![Gmsh schematic](Laminar_Images/Schematics.jpg)
 ![Mesh view](Laminar_Images/Mesh.jpg)
 
 ## Quality Metrics
