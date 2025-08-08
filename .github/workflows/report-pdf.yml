@@ -7,8 +7,17 @@ on:
       - 'Mesh_Files/**'
       - '.github/workflows/report-pdf.yml'
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  pdf:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,18 +26,30 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc \
-            texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
+            texlive-xetex \
+            texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra \
+            lmodern texlive-plain-generic
 
       - name: Build PDF
+        working-directory: Mesh_Files
         run: |
-          pandoc Mesh_Files/Laminar_Mesh_Report.md \
+          pandoc Laminar_Mesh_Report.md \
             --from=gfm \
             --pdf-engine=xelatex \
             -V geometry:margin=1in \
-            -o Mesh_Files/Laminar_Mesh_Report.pdf
+            -o Laminar_Mesh_Report.pdf
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact for Pages
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: Mesh_Files
+          path: Mesh_Files
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
