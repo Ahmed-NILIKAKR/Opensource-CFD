@@ -1,113 +1,110 @@
-# Laminar Mesh Report — Flow over a Circular Cylinder
+# Laminar Mesh Report — Flow over a Circular Cylinder (D = 0.25 m)
 
-## 1. Introduction
-
-This document presents the mesh configuration and quality assessment for the **laminar flow simulations** of the benchmark problem “Flow over a Circular Cylinder” with diameter \( D = 0.25 \, \text{m} \).  
-The objective is to provide a mesh suitable for **low-Reynolds-number** computations, ensuring adequate resolution of near-wall regions and the wake, while maintaining computational feasibility on a personal workstation.
-
-The laminar mesh is designed and generated in **Gmsh**, exported in OpenFOAM-compatible format, and validated for geometric integrity and quality metrics.
+## 1. Scope and Objectives
+This report documents the **laminar-case mesh** used for 2D flow over a circular cylinder of diameter $D=0.25\,\mathrm{m}$. The goals are:
+- to define a mesh that **resolves near-wall gradients and the near wake** at low Reynolds numbers with **controlled cost**;
+- to verify **shape-quality metrics** (SICN, SIGE, aspect ratio, non-orthogonality, skewness) for solver stability and accuracy;
+- to provide a **reproducible Gmsh/OpenFOAM pipeline** suitable for a personal workstation.
 
 ---
 
 ## 2. Problem Definition
 
-- **Geometry:** 2D crossflow over a circular cylinder of diameter \( D = 0.25 \, \text{m} \).  
-- **Domain size:** \( 6 \, \text{m} \times 3 \, \text{m} \) in \( x \)–\( y \) plane, extruded by \( 0.05 \, \text{m} \) in \( z \) to represent a 2D case in OpenFOAM.  
-- **Flow regime:** Laminar (targeted Reynolds number range: \( \text{Re} \leq 500 \)).  
-- **Case example:** \( \text{Re} = 100 \), \( U_\infty = 0.00604 \, \text{m/s} \), \( \nu = 1.51\times 10^{-5} \, \text{m}^2/\text{s} \).
+- **Geometry:** 2D crossflow over a cylinder of diameter $D=0.25\,\mathrm{m}$.
+- **Domain:** $6\,\mathrm{m}\times 3\,\mathrm{m}$ in the $x$–$y$ plane, extruded by $0.05\,\mathrm{m}$ in $z$ to realize a 2D case in OpenFOAM.
+- **Flow regime:** Laminar (targeted $\mathrm{Re}\le 500$).
+- **Reference case:** $\mathrm{Re}=100$, $U_\infty=0.00604\,\mathrm{m/s}$, $\nu=1.51\times 10^{-5}\,\mathrm{m^2/s}$.
 
 ### 2.1 Boundary Conditions
-
-| Patch Name | Type      | Description                              |
-|------------|-----------|------------------------------------------|
-| Inlet      | patch     | Uniform velocity \( U_\infinity \)           |
-| Outlet     | patch     | Zero-gradient pressure                   |
-| Cylinder   | wall      | No-slip boundary condition               |
-| Top        | symmetry  | Symmetry plane to reduce domain size     |
-| Btm        | symmetry  | Symmetry plane to reduce domain size     |
-| FrtBck     | empty     | 2D case definition in \( z \)-direction  |
+| Patch Name | Type     | Description                          |
+|------------|----------|--------------------------------------|
+| Inlet      | patch    | Uniform velocity $U_\infty$          |
+| Outlet     | patch    | Zero-gradient pressure               |
+| Cylinder   | wall     | No-slip                              |
+| Top        | symmetry | Symmetry plane                       |
+| Btm        | symmetry | Symmetry plane                       |
+| FrtBck     | empty    | 2D (empty) in the spanwise direction |
 
 ---
 
-## 3. Mesh Generation
+## 3. Mesh Generation (Gmsh)
 
-### 3.1 Gmsh Setup
-The geometry and mesh were created in **Gmsh** using a structured block topology with full hexahedral discretization.  
-Refinement is concentrated in:
-- The immediate vicinity of the cylinder (to resolve boundary layers)
-- The near wake region (to capture vortex formation and shedding)
-- The shear layers above and below the wake
+**Topology:** fully hexahedral (structured blocks).  
+**Refinement strategy:** (i) near-wall band around the cylinder; (ii) near-wake and shear layers; (iii) moderate coarsening toward far field to control cell count.
 
-### 3.2 Mesh Metrics
+> *Rationale.* At low $\mathrm{Re}$, the separation bubble and the first few diameters of the wake dominate accuracy demands; uniform over‑refinement is wasteful. The chosen distribution resolves these features while keeping the count feasible on a CPU‑only laptop.
 
-| Metric                | Value                  |
-|-----------------------|------------------------|
-| Total Cells           | 49,342                 |
-| Cell Type             | Hexahedra only         |
-| Total Points          | 99,728                 |
-| Total Faces           | 197,890                |
-| Internal Faces        | 98,162                 |
-| Average Faces per Cell| 6                      |
-| Cell Zones            | 1                      |
-| Domain Thickness (Z)  | 0.05 m (2D extrusion)  |
-| Boundary Patches      | 6 (as listed above)    |
+### 3.1 Domain & Patch Layout
+![Domain schematic](Laminar_Images/Schematics.jpg){ width=80% }
+
+\newpage
+
+### 3.2 Mesh Overview and Counts
+![Mesh view](Laminar_Images/Mesh.jpg){ width=80% }
+
+| Metric                  | Value                  |
+|-------------------------|------------------------|
+| Total Cells             | 49,342                 |
+| Cell Type               | Hexahedra only         |
+| Total Points            | 99,728                 |
+| Total Faces             | 197,890                |
+| Internal Faces          | 98,162                 |
+| Avg Faces per Cell      | 6                      |
+| Cell Zones              | 1                      |
+| Boundary Patches        | 6 (see §2.1)           |
+| Spanwise Thickness (Z)  | 0.05 m (2D extrusion)  |
 
 ---
 
 ## 4. Mesh Quality Assessment
 
-Mesh quality was evaluated in Gmsh using **shape-based metrics**:
+Quality was evaluated in Gmsh using shape‑based metrics. Values indicate **valid, well‑conditioned elements**:
 
 - **SICN** (Signed Inverse Condition Number):  
-  - Average: 0.6467  
-  - Min: 0.1023  
-  - Max: 0.7462  
-  - Interpretation: All elements valid; conditioning is moderate-to-good for solver stability.
+  avg **0.6467**, min **0.1023**, max **0.7462**  
+  → conditioning: **moderate–good**; no invalid/tangled elements.
 
 - **SIGE** (Signed Inverse Gradient Error):  
-  - Average: 0.9879  
-  - Min: 0.7178  
-  - Max: 1.0  
-  - Interpretation: Excellent gradient reconstruction quality; minimal numerical diffusion expected.
+  avg **0.9879**, min **0.7178**, max **1.0**  
+  → gradient reconstruction: **excellent** (low numerical diffusion).
 
-- **Max Aspect Ratio:** 3.99 — within acceptable range for CFD solvers.  
-- **Max Non-Orthogonality:** \( 43.93^\circ \) (average: \( 8.77^\circ \)) — no severe skewness.  
-- **Max Skewness:** 0.46 — well below the critical threshold of 4 for OpenFOAM.  
+- **Aspect Ratio (max):** **3.99**  
+- **Non‑Orthogonality (max/avg):** **43.93° / 8.77°**  
+- **Skewness (max):** **0.46**
 
-These results confirm that the mesh is sufficiently orthogonal and well-shaped for accurate laminar simulations without requiring heavy non-orthogonal corrections.
+These are well within typical OpenFOAM tolerances; heavy non‑orthogonal correction is not expected to be necessary for the laminar regime.
 
----
+\newpage
 
-## 5. Figures
+### 4.1 Quality Distributions
+![SICN distribution](Laminar_Images/SICN.jpg){ width=80% }
 
-### 5.1 Domain and Patch Layout
-![Domain schematic](Laminar_Images/Schematic.jpg)
+\newpage
 
-### 5.2 Mesh View
-![Mesh view](Laminar_Images/Mesh.jpg)
-
-### 5.3 Mesh Quality — SICN
-![SICN distribution](Laminar_Images/SICN.jpg)
-
-### 5.4 Mesh Quality — SIGE
-![SIGE distribution](Laminar_Images/SIGE.jpg)
+![SIGE distribution](Laminar_Images/SIGE.jpg){ width=80% }
 
 ---
 
-## 6. Suitability for Laminar Flow Simulations
+## 5. Suitability for Laminar Simulations
 
-The chosen mesh resolution ensures:
-- Accurate capture of boundary layer development at low Reynolds numbers without unnecessary refinement that would increase computational cost.
-- Sufficient resolution in the wake to resolve early stages of the **laminar vortex street** at \( \text{Re} \approx 100 \).
-- Stable convergence in OpenFOAM’s `icoFoam` solver with standard PISO settings.
+- **Boundary Layer & Near Wake:** The refinement band around the cylinder and the first several diameters downstream supports accurate prediction of separation and the onset of a laminar vortex street (e.g. at $\mathrm{Re}\approx 100$).
+- **Stability:** SICN/SIGE and low skewness imply robust linear solves with PISO in `icoFoam`.
+- **Efficiency:** Concentrated refinement avoids unnecessary cost in the far field, enabling transient runs on modest hardware.
 
-For turbulent cases, a different mesh will be employed with:
-- Higher near-wall refinement to meet \( y^+ \) requirements for turbulence models
-- Larger wake refinement region to capture high-frequency turbulent structures.
+*Note.* Turbulent cases will require a **different mesh** (e.g. smaller first‑cell height for $y^+$ targeting, extended wake refinement). This laminar mesh is **not** intended for high‑Re turbulence modeling.
+
+---
+
+## 6. Reproducibility
+
+- **Geometry & Mesh:** `cylinder_Laminar.geo` (Gmsh)
+- **Post‑processing:** ParaView; additional analysis via Python/Gnuplot
+- **Solver (example):** `icoFoam` (transient, incompressible, laminar; PISO)
+
+To regenerate the mesh, open `cylinder_Laminar.geo` in Gmsh, set the desired element size fields if needed, generate 2D, extrude to $z=0.05\,\mathrm{m}$ for OpenFOAM (2D via `empty`), and export.
 
 ---
 
 ## 7. Conclusion
 
-The laminar mesh for the 2D flow over a circular cylinder satisfies all geometric and numerical quality criteria for low-Reynolds-number CFD simulations. Its structured, fully hexahedral topology ensures high solution accuracy while keeping computational cost feasible for a personal workstation.
-
+The laminar mesh satisfies geometric and numerical quality criteria for low‑Re cylinder flows. It is **sufficiently orthogonal**, **low‑skew**, and **targeted in refinement** for accurate resolution of near‑wall and near‑wake features at acceptable computational cost on a personal workstation.
