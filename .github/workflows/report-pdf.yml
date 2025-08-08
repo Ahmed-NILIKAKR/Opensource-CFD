@@ -4,11 +4,11 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'Report/Build/**'
-      - '.github/workflows/build-report.yml'
+      - 'Reports/Build/**'
+      - '.github/workflows/build-laminar-report.yml'
 
 permissions:
-  contents: write
+  contents: write  # needed to commit the PDF back to the repo
 
 jobs:
   build:
@@ -24,8 +24,8 @@ jobs:
             texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra \
             lmodern texlive-plain-generic
 
-      - name: Build PDF
-        working-directory: Report/Build
+      - name: Build PDF (output into Reports/)
+        working-directory: Reports/Build
         run: |
           pandoc Laminar_Mesh_Report_pdf.md \
             --from=gfm+tex_math_dollars \
@@ -37,6 +37,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ../Laminar_Mesh_Report.pdf
-          git commit -m "ci: update Laminar Mesh Report PDF [skip ci]" || echo "No changes to commit"
+          git add Reports/Laminar_Mesh_Report.pdf
+          git commit -m "ci: update Laminar_Mesh_Report.pdf [skip ci]" || echo "No changes to commit"
           git push
