@@ -35,12 +35,10 @@ This report documents the **laminar-case mesh** used for 2D flow over a circular
 > *Rationale.* At low $\mathrm{Re}$, the separation bubble and the first few diameters of the wake dominate accuracy demands; uniform over‑refinement is wasteful. The chosen distribution resolves these features while keeping the count feasible on a CPU‑only laptop.
 
 ### 3.1 Domain & Patch Layout
-![Domain schematic](Laminar_Images/Schematics.jpg){ width=80% }
-
-\newpage
+![Domain schematic](Laminar_Images/Schematics.jpg)
 
 ### 3.2 Mesh Overview and Counts
-![Mesh view](Laminar_Images/Mesh.jpg){ width=80% }
+![Mesh view](Laminar_Images/Mesh.jpg)
 
 | Metric                  | Value                  |
 |-------------------------|------------------------|
@@ -74,14 +72,12 @@ Quality was evaluated in Gmsh using shape‑based metrics. Values indicate **val
 
 These are well within typical OpenFOAM tolerances; heavy non‑orthogonal correction is not expected to be necessary for the laminar regime.
 
-\newpage
-
 ### 4.1 Quality Distributions
-![SICN distribution](Laminar_Images/SICN.jpg){ width=80% }
+![SICN distribution](Laminar_Images/SICN.jpg)
 
 \newpage
 
-![SIGE distribution](Laminar_Images/SIGE.jpg){ width=80% }
+![SIGE distribution](Laminar_Images/SIGE.jpg)
 
 ---
 
