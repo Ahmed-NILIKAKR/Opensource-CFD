@@ -11,7 +11,7 @@ This report documents the **laminar-case mesh** used for 2D flow over a circular
 ## 2. Problem Definition
 
 - **Geometry:** 2D crossflow over a cylinder of diameter $D=0.25\,\mathrm{m}$.
-- **Domain:** $6\,\mathrm{m}\times 3\,\mathrm{m}$ in the x$–$y plane, extruded by $0.05\,\mathrm{m}$ in $z$ to realize a 2D case in OpenFOAM.
+- **Domain:** $6\,\mathrm{m}\times 3\,\mathrm{m}$ in the x–y plane, extruded by $0.05\,\mathrm{m}$ in $z$ to realize a 2D case in OpenFOAM.
 - **Flow regime:** Laminar (targeted $\mathrm{Re}\le 500$).
 - **Reference case:** $\mathrm{Re}=100$, $U_\infty=0.00604\,\mathrm{m/s}$, $\nu=1.51\times 10^{-5}\,\mathrm{m^2/s}$.
 
