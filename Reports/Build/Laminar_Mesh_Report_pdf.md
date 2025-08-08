@@ -12,7 +12,7 @@ Goals:
 ## 2. Problem Definition
 
 - **Geometry:** 2D crossflow over a cylinder of diameter $D=0.25\,\mathrm{m}$.
-- **Domain:** $6\,\mathrm{m} \times 3\,\mathrm{m}$ in the $x$–$y$ plane, extruded by $0.05\,\mathrm{m}$ in $z$ for 2D in OpenFOAM.
+- **Domain:** $6\,\mathrm{m} \times 3\,\mathrm{m}$ in the x–y plane, extruded by $0.05\,\mathrm{m}$ in $z$ for 2D in OpenFOAM.
 - **Flow regime:** Laminar ($\mathrm{Re} \le 500$).
 - **Reference case:** $\mathrm{Re} = 100$, $U_\infty = 0.00604\,\mathrm{m/s}$, $\nu = 1.51\times 10^{-5}\,\mathrm{m^2/s}$.
 
@@ -35,7 +35,7 @@ Goals:
 **Refinement strategy:** near-cylinder boundary layer, wake region, and shear layers; coarsening toward far field.
 
 ### 3.1 Domain & Patch Layout
-![Domain schematic](../../Mesh_Files/Laminar_Images/Schematic.jpg){ width=80% }
+![Domain schematic](../../Mesh_Files/Laminar_Images/Schematics.jpg){ width=80% }
 
 \newpage
 
