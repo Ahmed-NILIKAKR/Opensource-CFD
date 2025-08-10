@@ -140,3 +140,81 @@ At \( Re = 100 \), computed \( $St \approx 0.164$ \) matches well with literatur
 3. Henderson, R. D. (1995). *Details of the drag curve near the onset of vortex shedding*. Physics of Fluids, 7(9), 2102–2104.
 
 ---
+
+## 6. Force Coefficients
+
+The aerodynamic force coefficients are defined as:
+
+$$
+C_D = \frac{F_D}{\frac{1}{2} \rho U_\infty^2 D}
+$$
+
+$$
+C_L = \frac{F_L}{\frac{1}{2} \rho U_\infty^2 D}
+$$
+
+where:
+- \( F_D \) = instantaneous drag force per unit span
+- \( F_L \) = instantaneous lift force per unit span
+
+---
+
+### 6.1 Time Histories of \( C_D \) and \( C_L \)
+
+![CL and CD over time](plots/C1_CL_CD.png)
+
+**Observations:**
+- \( C_D(t) \) oscillates slightly about its mean (\( \overline{C_D} \approx 1.33 \)), driven by the alternating wake but with smaller amplitude than \( C_L \).
+- \( C_L(t) \) shows a nearly pure sinusoidal variation due to the alternate shedding of vortices (von Kármán street), with frequency \( f_s \).
+- The amplitude of \( C_L \) matches the RMS value in literature (\( C_{L,\mathrm{RMS}} \approx 0.23 \)).
+
+The time signal shows excellent periodicity, indicating the simulation has reached a statistically steady shedding state.
+
+---
+
+## 7. Strouhal Number Analysis
+
+The Strouhal number is defined as:
+
+$$
+St = \frac{f_s D}{U_\infty}
+$$
+
+To compute \( f_s \), the lift coefficient time history was analyzed using a Fast Fourier Transform (FFT).
+
+---
+
+### 7.1 FFT of \( C_L(t) \)
+
+![FFT of CL](plots/C1_CL_FFT.png)
+
+**Observations:**
+- A single dominant peak is observed in the spectrum at \( f_s \approx 0.00396 \ \mathrm{Hz} \).
+- Using the definition of \( St \):
+
+$$
+St = \frac{0.00396 \times 0.25}{0.00604} \approx 0.164
+$$
+
+- This matches the classical value for \( Re = 100 \) reported in **Norberg (2003)** and **Williamson (1996)**.
+
+---
+
+## 8. Literature Comparison
+
+| Quantity               | Simulation | Literature (Norberg, 2003) | Relative Error |
+|------------------------|------------|-----------------------------|----------------|
+| \( \overline{C_D} \)   | 1.33       | \( 1.33 \pm 0.02 \)          | < 0.5%         |
+| \( C_{L,\mathrm{RMS}} \) | 0.23       | \( 0.23 \pm 0.01 \)          | < 1%           |
+| \( St \)               | 0.164      | \( 0.164 \pm 0.002 \)        | < 1%           |
+
+The agreement is within experimental uncertainty, validating mesh resolution and solver setup for this laminar regime.
+
+---
+
+## 9. References
+1. Williamson, C. H. K. (1996). *Vortex dynamics in the cylinder wake*. Annual Review of Fluid Mechanics, 28(1), 477–539.  
+2. Norberg, C. (2003). *Fluctuating lift on a circular cylinder: review and new measurements*. Journal of Fluids and Structures, 17(1), 57–96.  
+3. Henderson, R. D. (1995). *Details of the drag curve near the onset of vortex shedding*. Physics of Fluids, 7(9), 2102–2104.
+
+---
