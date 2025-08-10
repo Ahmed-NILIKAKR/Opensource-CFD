@@ -122,3 +122,21 @@ where \( $F_D$ \) and \( $F_L$ \) are the instantaneous drag and lift forces per
 Simulation results are consistent with **Williamson (1996)** and **Norberg (2003)**, both of which present benchmark cylinder wake data.
 
 ---
+## 5. Strouhal Number
+The **Strouhal number** is defined as:
+
+$$
+St = \frac{f_s D}{U_\infty}
+$$
+
+where \( $f_s$ \) is the vortex shedding frequency extracted from the \( $C_L(t)$ \) signal using FFT.  
+At \( Re = 100 \), computed \( $St \approx 0.164$ \) matches well with literature values.
+
+---
+
+## 6. Literature References
+1. Williamson, C. H. K. (1996). *Vortex dynamics in the cylinder wake*. Annual Review of Fluid Mechanics, 28(1), 477–539.  
+2. Norberg, C. (2003). *Fluctuating lift on a circular cylinder: review and new measurements*. Journal of Fluids and Structures, 17(1), 57–96.  
+3. Henderson, R. D. (1995). *Details of the drag curve near the onset of vortex shedding*. Physics of Fluids, 7(9), 2102–2104.
+
+---
