@@ -83,7 +83,7 @@ where:
 - \( $U_\infty$ \) = free stream velocity  
 
 #### Significance:
-- \( \omega^* \) characterizes the rotational intensity of flow structures.
+- \( $\omega^*$ \) characterizes the rotational intensity of flow structures.
 - Non-dimensionalization allows comparison across different Reynolds numbers.
 - Positive and negative values correspond to clockwise and counterclockwise vortices.
 - At \( Re = 100 \), \( $\omega^*$ \) clearly captures the alternating vortex street.
