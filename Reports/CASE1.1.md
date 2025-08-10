@@ -8,10 +8,10 @@ This case investigates 2D incompressible laminar flow over a circular cylinder o
 |-----------------|-------------|
 | Reynolds Number \( Re \) | 100 |
 | \( $U_\infty$ \) (m/s)      | 0.00604 |
-| Fluid density \( \rho \) (kg/m³) | 1.225 |
-| Kinematic viscosity \( \nu \) (m²/s) | \( 1.51 \times 10^{-5} \) |
+| Fluid density \( $\rho$ \) (kg/m³) | 1.225 |
+| Kinematic viscosity \( $\nu$ \) (m²/s) | \( $1.51 \times 10^{-5}$ \) |
 | Solver          | icoFoam |
-| Time step \( \Delta t \)  | 0.05 s |
+| Time step \( $\Delta t$ \)  | 0.05 s |
 | End time        | 7000 s |
 | Mean CFL        | 0.01772 |
 | Max CFL         | 0.0622 |
@@ -34,10 +34,10 @@ $$
 $$
 
 where:
-- \( \mathbf{u} \) = velocity vector  
+- \( $\mathbf{u}$ \) = velocity vector  
 - \( p \) = pressure  
-- \( \rho \) = density  
-- \( \nu \) = kinematic viscosity  
+- \( $\rho$ \) = density  
+- \( $\nu$ \) = kinematic viscosity  
 
 ---
 
