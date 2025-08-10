@@ -61,7 +61,7 @@ LIC visualizes streamlines by texture advection, highlighting:
 
 ---
 
-### 3.3 Non-dimensional Spanwise Vorticity (\( \omega^* \))
+### 3.3 Non-dimensional Spanwise Vorticity (\( $\omega^*$ \))
 **[Animation Link](https://github.com/Ahmed-NILIKKAR/Opensource-CFD/blob/main/GIFs/C1.1_Omega_Star.gif?raw=true)**  
 
 #### Definition:
@@ -78,15 +78,15 @@ $$
 $$
 
 where:
-- \( \omega_z \) = z-component of vorticity  
+- \( $\omega_z$ \) = z-component of vorticity  
 - \( D \) = cylinder diameter  
-- \( U_\infty \) = free stream velocity  
+- \( $U_\infty$ \) = free stream velocity  
 
 #### Significance:
 - \( \omega^* \) characterizes the rotational intensity of flow structures.
 - Non-dimensionalization allows comparison across different Reynolds numbers.
 - Positive and negative values correspond to clockwise and counterclockwise vortices.
-- At \( Re = 100 \), \( \omega^* \) clearly captures the alternating vortex street.
+- At \( Re = 100 \), \( $\omega^*$ \) clearly captures the alternating vortex street.
 
 ---
 
