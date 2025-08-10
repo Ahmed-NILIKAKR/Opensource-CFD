@@ -40,5 +40,62 @@ where:
 - \( $\nu$ \) = kinematic viscosity  
 
 ---
+## 3. Field Animations and Interpretation
 
+### 3.1 Instantaneous Velocity Field
+**[Animation Link](https://github.com/Ahmed-NILIKKAR/Opensource-CFD/blob/main/GIFs/C1.1_Inst_Velocity.gif?raw=true)**  
+This animation shows the instantaneous velocity magnitude around the cylinder.  
+Key observations:
+- Upstream: attached boundary layer until separation point.
+- Downstream: alternate shedding of vortices into the wake.
+- Velocity deficit in the wake region.
+
+---
+
+### 3.2 Surface Line Integral Convolution (LIC)
+**[Animation Link](https://github.com/Ahmed-NILIKKAR/Opensource-CFD/blob/main/GIFs/C1.1_LIC.gif?raw=true)**  
+LIC visualizes streamlines by texture advection, highlighting:
+- Recirculation zones behind the cylinder.
+- Alternating vortex pattern in the wake.
+- Flow periodicity and symmetry breaking after separation.
+
+---
+
+### 3.3 Non-dimensional Spanwise Vorticity (\( \omega^* \))
+**[Animation Link](https://github.com/Ahmed-NILIKKAR/Opensource-CFD/blob/main/GIFs/C1.1_Omega_Star.gif?raw=true)**  
+
+#### Definition:
+Spanwise vorticity is given by:
+
+$$
+\omega_z = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
+$$
+
+The **non-dimensional form** is:
+
+$$
+\omega^* = \frac{\omega_z D}{U_\infty}
+$$
+
+where:
+- \( \omega_z \) = z-component of vorticity  
+- \( D \) = cylinder diameter  
+- \( U_\infty \) = free stream velocity  
+
+#### Significance:
+- \( \omega^* \) characterizes the rotational intensity of flow structures.
+- Non-dimensionalization allows comparison across different Reynolds numbers.
+- Positive and negative values correspond to clockwise and counterclockwise vortices.
+- At \( Re = 100 \), \( \omega^* \) clearly captures the alternating vortex street.
+
+---
+
+### 3.4 Absolute Pressure Field
+**[Animation Link](https://raw.githubusercontent.com/Ahmed-NILIKKAR/Opensource-CFD/main/GIFs/C1.1_Pabs.gif)**  
+Shows absolute pressure distribution:
+- High pressure on the upstream stagnation point.
+- Low pressure in the wake region.
+- Periodic fluctuation due to vortex shedding.
+
+---
 
