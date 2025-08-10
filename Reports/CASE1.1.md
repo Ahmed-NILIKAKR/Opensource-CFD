@@ -98,4 +98,27 @@ Shows absolute pressure distribution:
 - Periodic fluctuation due to vortex shedding.
 
 ---
+## 4. Force Coefficients (\( $C_L$ \) and \( $C_D$ \))
 
+The **drag coefficient** is defined as:
+
+$$
+C_D = \frac{F_D}{\frac{1}{2} \rho U_\infty^2 D}
+$$
+
+The **lift coefficient** is defined as:
+
+$$
+C_L = \frac{F_L}{\frac{1}{2} \rho U_\infty^2 D}
+$$
+
+where \( $F_D$ \) and \( $F_L$ \) are the instantaneous drag and lift forces per unit span.
+
+**Expected literature values at Re = 100**:
+- Mean \( $C_D \approx 1.33$ \)  
+- Root mean square \( $C_L \approx 0.23$ \)  
+- Strouhal number \( $St \approx 0.164$ \)  
+
+Simulation results are consistent with **Williamson (1996)** and **Norberg (2003)**, both of which present benchmark cylinder wake data.
+
+---
