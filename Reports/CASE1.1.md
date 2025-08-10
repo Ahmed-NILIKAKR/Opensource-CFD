@@ -61,7 +61,7 @@ LIC visualizes streamlines by texture advection, highlighting:
 
 ---
 
-### 3.3 Non-dimensional Spanwise Vorticity (\( $\omega^*$ \))
+### 3.3 Non-dimensional Spanwise Vorticity \( $\omega^*$ \)
 **[Animation Link](https://github.com/Ahmed-NILIKKAR/Opensource-CFD/blob/main/GIFs/C1.1_Omega_Star.gif?raw=true)**  
 
 #### Definition:
@@ -98,7 +98,7 @@ Shows absolute pressure distribution:
 - Periodic fluctuation due to vortex shedding.
 
 ---
-## 4. Force Coefficients (\( $C_L$ \) and \( $C_D$ \))
+## 4. Force Coefficients \( $C_L$ \) and \( $C_D$ \)
 
 The **drag coefficient** is defined as:
 
