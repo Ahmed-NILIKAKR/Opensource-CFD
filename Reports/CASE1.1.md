@@ -7,7 +7,7 @@ This case investigates 2D incompressible laminar flow over a circular cylinder o
 | Parameter       | Value       |
 |-----------------|-------------|
 | Reynolds Number \( Re \) | 100 |
-| \( U_\infty \) (m/s)      | 0.00604 |
+| \( $U_\infty$ \) (m/s)      | 0.00604 |
 | Fluid density \( \rho \) (kg/m³) | 1.225 |
 | Kinematic viscosity \( \nu \) (m²/s) | \( 1.51 \times 10^{-5} \) |
 | Solver          | icoFoam |
