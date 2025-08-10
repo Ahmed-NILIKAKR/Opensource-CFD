@@ -1,32 +1,20 @@
 # Case 1 — Laminar Flow Over a Circular Cylinder (Re = 100)
 
 ## 1. Overview
-This case investigates 2D incompressible laminar flow over a circular cylinder of diameter 
-
-$$
-D = 0.25 \ \mathrm{m}
-$$
-
-at a Reynolds number of 
-
-$$
-Re = 100
-$$
-
-The simulation is performed using **OpenFOAM**’s `icoFoam` solver with a high-quality structured mesh generated in **Gmsh**. Post-processing is done in **ParaView** and **Python**.
+This case investigates 2D incompressible laminar flow over a circular cylinder of diameter \( D = 0.25 \ \mathrm{m} \) at a Reynolds number of \( Re = 100 \). The simulation is performed using **OpenFOAM**’s `icoFoam` solver with a high-quality structured mesh generated in **Gmsh**. Post-processing is done in **ParaView** and **Python**.
 
 **Simulation parameters:**
 | Parameter       | Value       |
 |-----------------|-------------|
-| Reynolds Number | $$ Re = 100 $$ |
-| Free-stream velocity | $$ U_\infty = 0.00604 \ \mathrm{m/s} $$ |
-| Fluid density | $$ \rho = 1.225 \ \mathrm{kg/m^3} $$ |
-| Kinematic viscosity | $$ \nu = 1.51 \times 10^{-5} \ \mathrm{m^2/s} $$ |
+| Reynolds Number \( Re \) | 100 |
+| \( U_\infty \) (m/s)      | 0.00604 |
+| Fluid density \( \rho \) (kg/m³) | 1.225 |
+| Kinematic viscosity \( \nu \) (m²/s) | \( 1.51 \times 10^{-5} \) |
 | Solver          | icoFoam |
-| Time step       | $$ \Delta t = 0.05 \ \mathrm{s} $$ |
-| End time        | $$ 7000 \ \mathrm{s} $$ |
-| Mean CFL        | $$ Co_{\mathrm{mean}} = 0.01772 $$ |
-| Max CFL         | $$ Co_{\mathrm{max}} = 0.0622 $$ |
+| Time step \( \Delta t \)  | 0.05 s |
+| End time        | 7000 s |
+| Mean CFL        | 0.01772 |
+| Max CFL         | 0.0622 |
 
 The primary aim here is **baseline validation** of the solver and setup against published laminar cylinder flow data before proceeding to higher Reynolds numbers.
 
@@ -46,10 +34,10 @@ $$
 $$
 
 where:
-- $$ \mathbf{u} $$ = velocity vector  
-- $$ p $$ = pressure  
-- $$ \rho $$ = density  
-- $$ \nu $$ = kinematic viscosity  
+- \( \mathbf{u} \) = velocity vector  
+- \( p \) = pressure  
+- \( \rho \) = density  
+- \( \nu \) = kinematic viscosity  
 
 ---
 
@@ -57,8 +45,7 @@ where:
 
 ### 3.1 Instantaneous Velocity Field
 **[Animation Link](https://github.com/Ahmed-NILIKKAR/Opensource-CFD/blob/main/GIFs/C1.1_Inst_Velocity.gif?raw=true)**  
-Shows instantaneous velocity magnitude around the cylinder.
-
+This animation shows the instantaneous velocity magnitude around the cylinder.  
 Key observations:
 - Upstream: attached boundary layer until separation point.
 - Downstream: alternate shedding of vortices into the wake.
@@ -75,9 +62,10 @@ LIC visualizes streamlines by texture advection, highlighting:
 
 ---
 
-### 3.3 Non-dimensional Spanwise Vorticity
+### 3.3 Non-dimensional Spanwise Vorticity (\( \omega^* \))
 **[Animation Link](https://github.com/Ahmed-NILIKKAR/Opensource-CFD/blob/main/GIFs/C1.1_Omega_Star.gif?raw=true)**  
 
+#### Definition:
 Spanwise vorticity is given by:
 
 $$
@@ -91,15 +79,15 @@ $$
 $$
 
 where:
-- $$ \omega_z $$ = z-component of vorticity  
-- $$ D $$ = cylinder diameter  
-- $$ U_\infty $$ = free stream velocity  
+- \( \omega_z \) = z-component of vorticity  
+- \( D \) = cylinder diameter  
+- \( U_\infty \) = free stream velocity  
 
-**Significance:**
-- $$ \omega^* $$ characterizes the rotational intensity of flow structures.
+#### Significance:
+- \( \omega^* \) characterizes the rotational intensity of flow structures.
 - Non-dimensionalization allows comparison across different Reynolds numbers.
 - Positive and negative values correspond to clockwise and counterclockwise vortices.
-- At $$ Re = 100 $$, $$ \omega^* $$ clearly captures the alternating vortex street.
+- At \( Re = 100 \), \( \omega^* \) clearly captures the alternating vortex street.
 
 ---
 
@@ -112,7 +100,7 @@ Shows absolute pressure distribution:
 
 ---
 
-## 4. Force Coefficients
+## 4. Force Coefficients (\( C_L \) and \( C_D \))
 
 The **drag coefficient** is defined as:
 
@@ -126,27 +114,26 @@ $$
 C_L = \frac{F_L}{\frac{1}{2} \rho U_\infty^2 D}
 $$
 
-where $$ F_D $$ and $$ F_L $$ are the instantaneous drag and lift forces per unit span.
+where \( F_D \) and \( F_L \) are the instantaneous drag and lift forces per unit span.
 
 **Expected literature values at Re = 100**:
-- $$ \overline{C_D} \approx 1.33 $$  
-- $$ C_{L,\mathrm{RMS}} \approx 0.23 $$  
-- $$ St \approx 0.164 $$  
+- Mean \( C_D \approx 1.33 \)  
+- Root mean square \( C_L \approx 0.23 \)  
+- Strouhal number \( St \approx 0.164 \)  
 
-Simulation results are consistent with **Williamson (1996)** and **Norberg (2003)**.
+Simulation results are consistent with **Williamson (1996)** and **Norberg (2003)**, both of which present benchmark cylinder wake data.
 
 ---
 
 ## 5. Strouhal Number
-
-The Strouhal number is defined as:
+The **Strouhal number** is defined as:
 
 $$
 St = \frac{f_s D}{U_\infty}
 $$
 
-where $$ f_s $$ is the vortex shedding frequency extracted from the $$ C_L(t) $$ signal using FFT.  
-At $$ Re = 100 $$, computed $$ St \approx 0.164 $$ matches well with literature values.
+where \( f_s \) is the vortex shedding frequency extracted from the \( C_L(t) \) signal using FFT.  
+At \( Re = 100 \), computed \( St \approx 0.164 \) matches well with literature values.
 
 ---
 
